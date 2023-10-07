@@ -11,8 +11,9 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class Config {
 	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-	//private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-	//		.comment("Whether to log the dirt block on common setup").define("logDirtBlock", true);
+	// private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
+	// .comment("Whether to log the dirt block on common
+	// setup").define("logDirtBlock", true);
 
 	private static final ForgeConfigSpec.IntValue BONUS_REPAIR_PERCENTAGE = BUILDER.comment(
 			"Anvil repairs using two of the same weapon/armor restore a bonus percentage of the item's max durability\n"
@@ -20,9 +21,18 @@ public class Config {
 					+ "A value of 100 means that any repair of weapons/armor will restore said item to max durability.")
 			.defineInRange("bonusRepairPercentage", 25, 0, 100);
 
-	//public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-	//		.comment("What you want the introduction message to be for the magic number")
-	//		.define("magicNumberIntroduction", "The magic number is... ");
+	private static final ForgeConfigSpec.IntValue MAX_LEVEL_PERCENTAGE = BUILDER.comment(
+			"What the max level of enchantment can be attained when using an anvil. 100 means the same as vanilla maximum: 200 means you can get Sharpness X, Fire Aspect IV, etc.")
+			.defineInRange("maxLevelPercentage", 100, 0, Integer.MAX_VALUE);
+
+	private static final ForgeConfigSpec.IntValue SAME_TYPE_BONUS = BUILDER.comment(
+			"The amount of xp (in levels) to offer as a discount, when the two items in the anvil are the same.")
+			.defineInRange("sameTypeBonus", 1, 0, Integer.MAX_VALUE);
+
+	// public static final ForgeConfigSpec.ConfigValue<String>
+	// MAGIC_NUMBER_INTRODUCTION = BUILDER
+	// .comment("What you want the introduction message to be for the magic number")
+	// .define("magicNumberIntroduction", "The magic number is... ");
 
 	// a list of strings that are treated as resource locations for items
 	// private static final ForgeConfigSpec.ConfigValue<List<? extends String>>
@@ -33,9 +43,12 @@ public class Config {
 
 	static final ForgeConfigSpec SPEC = BUILDER.build();
 
-	//public static boolean logDirtBlock;
+	// public static boolean logDirtBlock;
 	public static int bonusRepairPercentage;
-	//public static String magicNumberIntroduction;
+	public static int maxLevelPercentage;
+	public static int sameTypeBonus;
+
+	// public static String magicNumberIntroduction;
 	// public static Set<Item> items;
 
 	// private static boolean validateItemName(final Object obj)
@@ -46,10 +59,12 @@ public class Config {
 
 	@SubscribeEvent
 	static void onLoad(final ModConfigEvent event) {
-		//logDirtBlock = LOG_DIRT_BLOCK.get();
-		//magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
-		
+		// logDirtBlock = LOG_DIRT_BLOCK.get();
+		// magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+
 		bonusRepairPercentage = BONUS_REPAIR_PERCENTAGE.get();
+		maxLevelPercentage = MAX_LEVEL_PERCENTAGE.get();
+		sameTypeBonus = SAME_TYPE_BONUS.get();
 
 		// convert the list of strings into a set of items
 		// items = ITEM_STRINGS.get().stream()

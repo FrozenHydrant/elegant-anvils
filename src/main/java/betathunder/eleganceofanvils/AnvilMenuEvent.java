@@ -82,7 +82,7 @@ public class AnvilMenuEvent {
 					if (baseLevel == level) {
 						// Note: a combination tax of 1 level is applied for every enchantment which
 						// becomes more powerful.
-						if (baseLevel < bonusEnchant.getMaxLevel()) {
+						if (baseLevel < bonusEnchant.getMaxLevel() * (Config.maxLevelPercentage/100.0)) {
 							newLevel = baseLevel + 1;
 							levelCost += 1;
 						}
@@ -97,7 +97,7 @@ public class AnvilMenuEvent {
 				// isEnchantmentCompatible() makes sure we don't have smite and sharpness, for
 				// example
 				// bonusEnchant.canEnchant() makes sure you can't put sharpness on boots
-				// But for books, almost anything goes. (Again, to be configurable)
+				// But for books, almost anything goes.
 				else {
 					if (EnchantmentHelper.isEnchantmentCompatible(baseEnchants.keySet(), bonusEnchant)
 							&& (bonusEnchant.canEnchant(toForge) || toForge.getItem() == Items.ENCHANTED_BOOK)) {
@@ -132,7 +132,7 @@ public class AnvilMenuEvent {
 
 			// Give levels back for no-enchanted-book anvil operations (Configurable)
 			if (toForge.getItem() == catalyst.getItem() && toForge.getItem() != Items.ENCHANTED_BOOK) {
-				levelCost = Math.max(levelCost - 1, 1);
+				levelCost = Math.max(levelCost - Config.sameTypeBonus, 1);
 			}
 
 			// We'll take the lesser of the 2 rarity deltas: the catalyst, and the forging

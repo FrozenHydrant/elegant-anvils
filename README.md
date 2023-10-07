@@ -1,43 +1,14 @@
+elegant-anvils
+======
 
-Installation information
-=======
+This mod reworks AnvilMenu mechanics, completely changing the costs of anvil operations (and resulting in cheaper operations in most cases).
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions at [github](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+Things to note:
 
-Once you have your clone, you can initialize your copy.
+1. In Vanilla, it was often optimal to pair enchantments together when combining large amounts together: if you had 8 enchanted books, each with 1 enchantment, you would make 4 books with 2 enchantments each, and then 2 books with 4 enchantments each, until finally you had one book with all 8 enchantments. Because this mod removes "prior work penalty", the opposite is now true: it may often be optimal to add books one at a time until all enchantments are present.
+2. Although this mod tries its best to mimic all vanilla anvil recipes, this is not guaranteed.
 
-Setup Process:
---------
-
-Step 1: Open your command-line and browse to the folder where you extracted cloned your copy of this repository to.
-
-Step 2: You're left with a choice.
-If you prefer to use Eclipse:
-1. Run the following command: `gradlew genEclipseRuns` (`./gradlew genEclipseRuns` if you are on Mac/Linux)
-2. Open Eclipse, Import > Existing Gradle Project > Select Folder 
-   or run `gradlew eclipse` to generate the project.
-
-If you prefer to use IntelliJ:
-1. Open IDEA, and import project.
-2. Select your build.gradle file and have it import.
-3. Run the following command: `gradlew genIntellijRuns` (`./gradlew genIntellijRuns` if you are on Mac/Linux)
-4. Refresh the Gradle Project in IDEA if required.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can 
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license, if you do not agree with it you can change your mapping names to other crowdsourced names in your 
-build.gradle. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
+Neoforged Docs
 ==========
 Community Documentation: https://docs.neoforged.net/  
 NeoForged Discord: https://discord.neoforged.net/
